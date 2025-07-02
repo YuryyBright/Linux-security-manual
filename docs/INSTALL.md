@@ -23,7 +23,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/linux-security-toolkit.git
+git clone https://github.com/YuryyBright/linux-security-toolkit.git
 cd linux-security-toolkit
 
 # Run setup with maximum security
@@ -34,7 +34,7 @@ sudo ./setup.sh --level=maximum
 
 ```bash
 # 1. Clone and prepare
-git clone https://github.com/yourusername/linux-security-toolkit.git
+git clone https://github.com/YuryyBright/linux-security-toolkit.git
 cd linux-security-toolkit
 chmod +x scripts/*.sh
 
@@ -121,7 +121,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y git
 
 # Clone repository
-git clone https://github.com/yourusername/linux-security-toolkit.git
+git clone https://github.com/YuryyBright/linux-security-toolkit.git
 ```
 
 ### Step 2: Configuration
