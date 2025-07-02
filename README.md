@@ -211,7 +211,7 @@ This project is licensed under the GPL-3.0 License - see [LICENSE](LICENSE) for 
 Run this command to verify your security status:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/yourusername/linux-security-toolkit/main/scripts/quick-check.sh | bash
+curl -sSL https://raw.githubusercontent.com/YuryyBright/linux-security-toolkit/main/scripts/quick-check.sh | bash
 ```
 
 ---
