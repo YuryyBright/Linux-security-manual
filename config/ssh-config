@@ -1,0 +1,96 @@
+# Hardened SSH Configuration
+# Place in /etc/ssh/sshd_config
+
+# Protocol and Port
+Port 2222
+Protocol 2
+AddressFamily inet
+
+# Host Keys
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+
+# Logging
+SyslogFacility AUTH
+LogLevel VERBOSE
+
+# Authentication
+LoginGraceTime 30
+PermitRootLogin no
+StrictModes yes
+MaxAuthTries 3
+MaxSessions 2
+
+# Public key authentication
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+# Password authentication (disabled)
+PasswordAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+
+# Kerberos authentication (disabled)
+KerberosAuthentication no
+KerberosOrLocalPasswd no
+KerberosTicketCleanup yes
+KerberosGetAFSToken no
+
+# GSSAPI authentication (disabled)
+GSSAPIAuthentication no
+GSSAPICleanupCredentials yes
+
+# Host-based authentication (disabled)
+HostbasedAuthentication no
+IgnoreUserKnownHosts yes
+IgnoreRhosts yes
+
+# Other authentication
+UsePAM yes
+AuthenticationMethods publickey
+
+# User restrictions
+AllowUsers ${PRIMARY_USER}
+DenyUsers root admin administrator
+AllowGroups ssh-users
+
+# Connection settings
+ClientAliveInterval 300
+ClientAliveCountMax 2
+TCPKeepAlive no
+Compression no
+
+# Environment
+PermitUserEnvironment no
+AcceptEnv LANG LC_*
+
+# Tunneling and forwarding
+AllowAgentForwarding no
+AllowTcpForwarding no
+GatewayPorts no
+X11Forwarding no
+X11DisplayOffset 10
+X11UseLocalhost yes
+PermitTTY yes
+PrintMotd no
+PrintLastLog yes
+
+# Chroot
+ChrootDirectory none
+
+# Subsystems
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+# Security restrictions
+PermitTunnel no
+DebianBanner no
+VersionAddendum none
+
+# Cryptography settings
+KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,umac-128-etm@openssh.com
+HostKeyAlgorithms ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-256
+
+# Banner
+Banner /etc/ssh/banner
